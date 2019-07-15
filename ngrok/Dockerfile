@@ -25,11 +25,4 @@ HEALTHCHECK       \
         curl --fail http://localhost:4040/api/tunnels || exit 1  
 
 entrypoint ["/src/entrypoint.sh"]
-# cmd ngrok authtoken $TOK && ngrok http 80
-# cmd ngrok authtoken $TOK && ngrok http 80 > /dev/null
 cmd ["tail","-f","/dev/null"]
-
-
-# ngrok http 80 > /dev/null &
-
-# $(curl http://127.0.0.1:4040/api/tunnels | jq -r '.tunnels[] | select(.name|test("http")) | .public_url')
