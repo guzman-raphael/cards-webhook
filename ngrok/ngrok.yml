@@ -1,0 +1,5 @@
+# authtoken: token_here
+tunnels:
+  hook:
+    addr: hook:4000
+    proto: http

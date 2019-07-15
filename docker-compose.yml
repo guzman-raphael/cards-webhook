@@ -1,0 +1,24 @@
+version: '2.4'
+services:
+  ngrok:
+    build:
+      context: ./ngrok
+    image: raphaelguzman/ngrok:v1.0
+    environment:
+      - NGROK_TOKEN
+    networks:
+      - main
+  hook:
+    build:
+      context: ./hook
+    image: raphaelguzman/github-webhook:v1.0
+    environment:
+      - GITHUB_TOKEN
+    networks:
+      - main
+    depends_on:
+      ngrok:
+        condition: service_healthy
+networks:
+  main:
+      
