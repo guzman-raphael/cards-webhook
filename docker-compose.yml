@@ -1,3 +1,4 @@
+# scp -P 4422 -r /github/raphael/github-webhook rguzman@192.168.1.179:/home/rguzman/Documents/docker-compose/cards-webhook
 version: '2.4'
 services:
   ngrok:
@@ -6,6 +7,7 @@ services:
     image: raphaelguzman/ngrok:v1.0
     environment:
       - NGROK_TOKEN
+      - GITHUB_TOKEN
     networks:
       - main
   hook:

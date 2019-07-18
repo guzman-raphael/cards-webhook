@@ -4,14 +4,15 @@ copy ./ngrok-stable-linux-amd64.zip /src/
 
 run \
     apt-get update && \
-    apt-get install -y unzip curl jq && \
+    apt-get install -y unzip curl jq procps && \
     npm install --save express body-parser && \
     unzip /src/ngrok*.zip -d /src/ && \
     mv /src/ngrok /usr/local/bin/
 
-copy ./entrypoint.sh /src/
+copy ./entrypoint.sh ./healthcheck.sh /src/
 run \
-    chmod +x /src/entrypoint.sh
+    chmod +x /src/entrypoint.sh && \
+    chmod +x /src/healthcheck.sh
 
 
 copy ./ngrok.yml /src/
@@ -22,7 +23,7 @@ HEALTHCHECK       \
     --timeout=3s \ 
     --retries=20  \
     CMD           \
-        curl --fail http://localhost:4040/api/tunnels || exit 1  
+        /src/healthcheck.sh
 
 entrypoint ["/src/entrypoint.sh"]
 cmd ["tail","-f","/dev/null"]
