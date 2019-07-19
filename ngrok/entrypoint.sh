@@ -1,6 +1,6 @@
 #! /bin/bash
 
-ORG=guzman-raphael
+ORG=vathes
 REPO=provision-k8s
 
 ngrok authtoken $NGROK_TOKEN

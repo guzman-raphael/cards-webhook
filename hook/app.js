@@ -7,7 +7,7 @@ const request = require('./request');
 
 // var github_project = "Hub: Kubernetes Cluster Hosted by AWS";
 var github_project = "First Release";
-var user = 'guzman-raphael';
+var user = 'vathes';
 var repo = 'provision-k8s';
 var tok = process.env.GITHUB_TOKEN;
 var agent = 'DataJoint-App';
