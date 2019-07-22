@@ -7,6 +7,7 @@ NGROK=$(docker ps --format "{{.Names}}" | grep ngrok)
 STATE=$(docker inspect --format "{{json .State.Health}}" $NGROK | jq -r '.Status')
 while [ "$STATE" != "unhealthy" ] && [ "$STATE" != "null" ]
 do
+    sleep 30
     STATE=$(docker inspect --format "{{json .State.Health}}" $NGROK | jq -r '.Status')
 done
 
