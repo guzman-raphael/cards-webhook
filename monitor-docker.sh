@@ -1,7 +1,7 @@
 #! /bin/bash
 # ./monitor-docker.sh &
 
-docker-compose -d --build
+docker-compose up -d --build
 NGROK=$(docker ps --format "{{.Names}}" | grep ngrok)
 
 STATE=$(docker inspect --format "{{json .State.Health}}" $NGROK | jq -r '.Status')
