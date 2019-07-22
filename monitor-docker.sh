@@ -1,6 +1,5 @@
 #! /bin/bash
-
-cd /github/raphael/github-webhook
+# ./monitor-docker.sh &
 
 docker-compose -d --build
 NGROK=$(docker ps --format "{{.Names}}" | grep ngrok)
