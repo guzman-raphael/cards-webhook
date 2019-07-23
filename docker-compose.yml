@@ -5,6 +5,7 @@ services:
     build:
       context: ./ngrok
     image: raphaelguzman/ngrok:v1.0
+    restart: always
     environment:
       - NGROK_TOKEN
       - GITHUB_TOKEN
@@ -14,6 +15,7 @@ services:
     build:
       context: ./hook
     image: raphaelguzman/github-webhook:v1.0
+    restart: always
     environment:
       - GITHUB_TOKEN
     networks:
