@@ -12,4 +12,4 @@ do
 done
 
 docker-compose down
-./monitor-docker.sh
+./monitor-docker.sh &
